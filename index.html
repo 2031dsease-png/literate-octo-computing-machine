@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071326">
+<title>Nova Hub</title>
+<style>
+:root{color-scheme:dark;--bg:#061326;--panel:#102846;--line:#20558a;--blue:#65c8ff;--text:#e5f5ff;--muted:#8cbde5}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#123765 0,#061326 56%);font:16px system-ui,Segoe UI,sans-serif;color:var(--text)}
+main{max-width:1120px;margin:auto;padding:25px 20px 48px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;font-size:1.35rem;font-weight:850;letter-spacing:.12em;color:var(--blue)}
+.logo{width:43px;height:43px;border:1px solid #398dcc;border-radius:13px;display:grid;place-items:center;background:#123b78;box-shadow:0 0 22px #1685d455;font-size:23px}
+.pill{border:1px solid #28669c;border-radius:999px;padding:6px 11px;color:var(--blue);font-size:.75rem;letter-spacing:.08em}
+.hero{text-align:center;padding:48px 0 26px}.hero h1{font-size:clamp(2rem,6vw,3.5rem);margin:0 0 8px}.hero p{color:var(--muted);margin:0 0 23px}
+.clock{color:#a9dfff;font-size:.88rem;margin:-10px 0 20px}
+.search{max-width:690px;margin:auto;display:flex;gap:10px;padding:9px 12px;border:1px solid #277cc4;border-radius:999px;background:#102846;box-shadow:0 0 25px #1685d422}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font-size:1rem;padding:7px}
+button{border:0;border-radius:999px;background:#1684ca;color:white;padding:10px 17px;font-weight:700;cursor:pointer}
+button:hover{filter:brightness(1.13)}button.secondary{background:#163858;border:1px solid #28669c;color:#bde6ff}
+.toolsbar{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:17px auto 5px}
+.toolsbar button{font-size:.8rem;padding:8px 13px}
+section{margin:27px 0}h2{font-size:1rem;letter-spacing:.08em;color:#a9dfff;margin:0 0 13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+a.tile,.custom-tile{min-height:104px;text-decoration:none;color:var(--text);background:#102a49;border:1px solid var(--line);border-radius:15px;padding:15px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:.15s;position:relative}
+a.tile:hover,.custom-tile:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 0 20px #1685d444}
+.symbol{font-size:25px;color:var(--blue)}.name{font-weight:650;font-size:.92rem}.cat{font-size:.72rem;color:#7eaed5}
+.fav{position:absolute;right:8px;top:7px;background:transparent;color:#83b8df;padding:3px 6px;font-size:17px}.fav.active{color:#ffe27a}
+section.hidden{display:none!important}
+.panel{background:#0d2340;border:1px solid #20558a;border-radius:17px;padding:17px;margin:25px 0}
+.panel h2{margin-bottom:10px}.formrow{display:flex;flex-wrap:wrap;gap:9px}.formrow input,.formrow select,.note{background:#071a30;color:var(--text);border:1px solid #28669c;border-radius:10px;padding:11px;font:inherit;min-width:0}
+.formrow input{flex:1}.formrow select{min-width:145px}
+.note{width:100%;min-height:90px;resize:vertical}
+.small{font-size:.78rem;color:var(--muted);line-height:1.5}
+#empty{display:none;color:var(--muted);text-align:center;padding:25px}
+footer{text-align:center;color:#7299bd;font-size:.78rem;margin-top:38px}
+@media(max-width:540px){main{padding:17px 13px}.hero{padding:38px 0 23px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formrow>*{width:100%}}
+</style>
+</head>
+<body><main>
+<header><div class="brand"><div class="logo">✦</div>NOVA HUB</div><span class="pill">BLUE NEON</span></header>
+<div class="hero"><h1>Your Internet. One Place.</h1><p>Search, social, games, creativity and more.</p><div class="clock" id="clock"></div>
+<form class="search" id="searchForm"><input id="search" type="search" placeholder="Search websites or the web..." aria-label="Search websites"><button type="submit">Search</button></form>
+<div class="toolsbar"><button class="secondary" data-filter="all">All sites</button><button class="secondary" data-filter="favorites">★ Favorites</button><button class="secondary" data-filter="Social">Social</button><button class="secondary" data-filter="Games">Games</button><button class="secondary" data-filter="Tools">Tools</button></div>
+</div>
+<div id="directory">
+<section data-section="Social"><h2>SOCIAL</h2><div class="grid">
+<a class="tile" data-name="Snapchat" data-category="Social" href="https://web.snapchat.com/" target="_blank" rel="noopener"><span class="symbol">👻</span><span class="name">Snapchat</span><span class="cat">Social</span></a>
+<a class="tile" data-name="Instagram" data-category="Social" href="https://www.instagram.com/" target="_blank" rel="noopener"><span class="symbol">◎</span><span class="name">Instagram</span><span class="cat">Social</span></a>
+<a class="tile" data-name="TikTok" data-category="Social" href="https://www.tiktok.com/" target="_blank" rel="noopener"><span class="symbol">♪</span><span class="name">TikTok</span><span class="cat">Social</span></a>
+<a class="tile" data-name="Reddit" data-category="Social" href="https://www.reddit.com/" target="_blank" rel="noopener"><span class="symbol">◉</span><span class="name">Reddit</span><span class="cat">Social</span></a>
+<a class="tile" data-name="Pinterest" data-category="Social" href="https://www.pinterest.com/" target="_blank" rel="noopener"><span class="symbol">P</span><span class="name">Pinterest</span><span class="cat">Social</span></a>
+<a class="tile" data-name="Discord" data-category="Social" href="https://discord.com/" target="_blank" rel="noopener"><span class="symbol">◈</span><span class="name">Discord</span><span class="cat">Social</span></a>
+<a class="tile" data-name="Threads" data-category="Social" href="https://www.threads.net/" target="_blank" rel="noopener"><span class="symbol">@</span><span class="name">Threads</span><span class="cat">Social</span></a>
+<a class="tile" data-name="Bluesky" data-category="Social" href="https://bsky.app/" target="_blank" rel="noopener"><span class="symbol">🦋</span><span class="name">Bluesky</span><span class="cat">Social</span></a>
+</div></section>
+<section data-section="Video"><h2>VIDEO & ENTERTAINMENT</h2><div class="grid">
+<a class="tile" data-name="YouTube" data-category="Video" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="symbol">▶</span><span class="name">YouTube</span><span class="cat">Video</span></a>
+<a class="tile" data-name="Twitch" data-category="Video" href="https://www.twitch.tv/" target="_blank" rel="noopener"><span class="symbol">▣</span><span class="name">Twitch</span><span class="cat">Streaming</span></a>
+<a class="tile" data-name="Spotify" data-category="Video" href="https://www.spotify.com/" target="_blank" rel="noopener"><span class="symbol">♫</span><span class="name">Spotify</span><span class="cat">Music</span></a>
+<a class="tile" data-name="Netflix" data-category="Video" href="https://www.netflix.com/" target="_blank" rel="noopener"><span class="symbol">▤</span><span class="name">Netflix</span><span class="cat">Entertainment</span></a>
+<a class="tile" data-name="Disney Plus" data-category="Video" href="https://www.disneyplus.com/" target="_blank" rel="noopener"><span class="symbol">✦</span><span class="name">Disney+</span><span class="cat">Entertainment</span></a>
+<a class="tile" data-name="SoundCloud" data-category="Video" href="https://soundcloud.com/" target="_blank" rel="noopener"><span class="symbol">☁</span><span class="name">SoundCloud</span><span class="cat">Music</span></a>
+</div></section>
+<section data-section="Games"><h2>GAMES</h2><div class="grid">
+<a class="tile" data-name="Roblox" data-category="Games" href="https://www.roblox.com/" target="_blank" rel="noopener"><span class="symbol">◇</span><span class="name">Roblox</span><span class="cat">Games</span></a>
+<a class="tile" data-name="Minecraft" data-category="Games" href="https://www.minecraft.net/" target="_blank" rel="noopener"><span class="symbol">▦</span><span class="name">Minecraft</span><span class="cat">Games</span></a>
+<a class="tile" data-name="Coolmath Games" data-category="Games" href="https://www.coolmathgames.com/" target="_blank" rel="noopener"><span class="symbol">∑</span><span class="name">Coolmath Games</span><span class="cat">Games</span></a>
+<a class="tile" data-name="Scratch" data-category="Games" href="https://scratch.mit.edu/" target="_blank" rel="noopener"><span class="symbol">⌘</span><span class="name">Scratch</span><span class="cat">Create</span></a>
+<a class="tile" data-name="Chess" data-category="Games" href="https://www.chess.com/" target="_blank" rel="noopener"><span class="symbol">♟</span><span class="name">Chess.com</span><span class="cat">Strategy</span></a>
+<a class="tile" data-name="Poki" data-category="Games" href="https://poki.com/" target="_blank" rel="noopener"><span class="symbol">🎮</span><span class="name">Poki</span><span class="cat">Games</span></a>
+</div></section>
+<section data-section="Tools"><h2>TOOLS & PRODUCTIVITY</h2><div class="grid">
+<a class="tile" data-name="Google Drive" data-category="Tools" href="https://drive.google.com/" target="_blank" rel="noopener"><span class="symbol">◫</span><span class="name">Google Drive</span><span class="cat">Files</span></a>
+<a class="tile" data-name="Google Docs" data-category="Tools" href="https://docs.google.com/" target="_blank" rel="noopener"><span class="symbol">▧</span><span class="name">Google Docs</span><span class="cat">Writing</span></a>
+<a class="tile" data-name="Google Slides" data-category="Tools" href="https://slides.google.com/" target="_blank" rel="noopener"><span class="symbol">▣</span><span class="name">Google Slides</span><span class="cat">Presentations</span></a>
+<a class="tile" data-name="Google Sheets" data-category="Tools" href="https://sheets.google.com/" target="_blank" rel="noopener"><span class="symbol">▦</span><span class="name">Google Sheets</span><span class="cat">Spreadsheets</span></a>
+<a class="tile" data-name="Canva" data-category="Tools" href="https://www.canva.com/" target="_blank" rel="noopener"><span class="symbol">✿</span><span class="name">Canva</span><span class="cat">Design</span></a>
+<a class="tile" data-name="ChatGPT" data-category="Tools" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="symbol">✧</span><span class="name">ChatGPT</span><span class="cat">AI assistant</span></a>
+<a class="tile" data-name="Gmail" data-category="Tools" href="https://mail.google.com/" target="_blank" rel="noopener"><span class="symbol">✉</span><span class="name">Gmail</span><span class="cat">Email</span></a>
+</div></section>
+</div>
+<div id="empty">No matching websites found.</div>
+<div class="panel"><h2>＋ ADD YOUR OWN WEBSITE</h2><form id="addForm" class="formrow"><input id="siteName" placeholder="Website name" maxlength="35" required><input id="siteUrl" type="url" placeholder="https://example.com" required><select id="siteCategory"><option>Tools</option><option>Social</option><option>Games</option><option>Video</option><option>Other</option></select><button type="submit">Add shortcut</button></form><p class="small">Your custom shortcuts are saved in this browser on this device. Only add websites you trust.</p><div class="grid" id="customGrid"></div></div>
+<div class="panel"><h2>QUICK NOTES</h2><textarea class="note" id="notes" placeholder="Write a reminder or note..."></textarea><p class="small">Notes save in this browser on this device. Don't put passwords or private information here.</p></div>
+<footer>NOVA HUB · Your personal website dashboard · External site and school network rules still apply</footer>
+</main>
+<script>
+const input=document.getElementById('search'),tiles=[...document.querySelectorAll('.tile')],empty=document.getElementById('empty');
+let activeFilter='all';
+function applyFilters(){let q=input.value.trim().toLowerCase(),shown=0;document.querySelectorAll('#directory section').forEach(sec=>{let sectionShown=0;sec.querySelectorAll('.tile').forEach(a=>{let match=(a.innerText+' '+a.dataset.name).toLowerCase().includes(q);let favMatch=activeFilter!=='favorites'||localStorage.getItem('nova-fav-'+a.dataset.name)==='1';let catMatch=activeFilter==='all'||activeFilter==='favorites'||a.dataset.category===activeFilter;let ok=match&&favMatch&&catMatch;a.style.display=ok?'flex':'none';if(ok){shown++;sectionShown++}});sec.classList.toggle('hidden',sectionShown===0)});document.querySelectorAll('.custom-tile').forEach(a=>{let ok=a.innerText.toLowerCase().includes(q)&&(activeFilter==='all'||activeFilter==='favorites'||activeFilter===a.dataset.category)&&(activeFilter!=='favorites'||a.dataset.fav==='1');a.style.display=ok?'flex':'none';if(ok)shown++});empty.style.display=shown?'none':'block'}
+input.addEventListener('input',applyFilters);
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();let q=input.value.trim();if(q)window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank','noopener')});
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{activeFilter=b.dataset.filter;applyFilters()}));
+function addFavoriteButtons(){document.querySelectorAll('a.tile').forEach(a=>{if(a.querySelector('.fav'))return;let b=document.createElement('button');b.className='fav';b.type='button';b.textContent='☆';b.title='Save favorite';let key='nova-fav-'+a.dataset.name;let sync=()=>{let yes=localStorage.getItem(key)==='1';b.textContent=yes?'★':'☆';b.classList.toggle('active',yes)};sync();b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();localStorage.setItem(key,localStorage.getItem(key)==='1'?'0':'1');sync();applyFilters()});a.appendChild(b)})}
+addFavoriteButtons();
+const customGrid=document.getElementById('customGrid');
+function renderCustom(){customGrid.innerHTML='';let list=JSON.parse(localStorage.getItem('nova-custom-sites')||'[]');list.forEach((s,i)=>{let a=document.createElement('a');a.className='custom-tile';a.dataset.category=s.category;a.dataset.fav=s.fav?'1':'0';a.href=s.url;a.target='_blank';a.rel='noopener';a.innerHTML='<span class="symbol">↗</span><span class="name"></span><span class="cat"></span><button class="fav" type="button" title="Remove shortcut">×</button>';a.querySelector('.name').textContent=s.name;a.querySelector('.cat').textContent=s.category;a.querySelector('button').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();let now=JSON.parse(localStorage.getItem('nova-custom-sites')||'[]');now.splice(i,1);localStorage.setItem('nova-custom-sites',JSON.stringify(now));renderCustom();applyFilters()});customGrid.appendChild(a)});applyFilters()}
+document.getElementById('addForm').addEventListener('submit',e=>{e.preventDefault();let name=document.getElementById('siteName').value.trim(),url=document.getElementById('siteUrl').value.trim(),category=document.getElementById('siteCategory').value;try{let parsed=new URL(url);if(!['http:','https:'].includes(parsed.protocol))throw Error();let list=JSON.parse(localStorage.getItem('nova-custom-sites')||'[]');list.push({name,url:parsed.href,category});localStorage.setItem('nova-custom-sites',JSON.stringify(list));e.target.reset();renderCustom()}catch{alert('Please enter a valid website address beginning with https://')}})
+const notes=document.getElementById('notes');notes.value=localStorage.getItem('nova-notes')||'';notes.addEventListener('input',()=>localStorage.setItem('nova-notes',notes.value));
+function updateClock(){document.getElementById('clock').textContent=new Date().toLocaleString(undefined,{weekday:'long',month:'long',day:'numeric',hour:'numeric',minute:'2-digit'})}updateClock();setInterval(updateClock,30000);
+renderCustom();
+</script></body></html>
